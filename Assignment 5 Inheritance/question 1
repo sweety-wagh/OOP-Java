@@ -1,0 +1,36 @@
+// Create the parent class
+class Parent {
+    // Method for the parent class
+    public void printParentMessage() {
+        System.out.println("This is parent class");
+    }
+}
+
+// Create the child class (subclass) inheriting from Parent
+class Child extends Parent {
+    // Method for the child class
+    public void printChildMessage() {
+        System.out.println("This is child class");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        
+        // Create an object for each of the classes
+        Parent parentObj = new Parent();
+        Child childObj = new Child();
+        
+        // 1 - Call method of parent class by object of parent class
+        System.out.print("1 - ");
+        parentObj.printParentMessage();
+        
+        // 2 - Call method of child class by object of child class
+        System.out.print("2 - ");
+        childObj.printChildMessage();
+        
+        // 3 - Call method of parent class by object of child class
+        System.out.print("3 - ");
+        childObj.printParentMessage(); 
+    }
+}
