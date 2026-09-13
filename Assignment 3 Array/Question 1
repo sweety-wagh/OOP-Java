@@ -1,0 +1,16 @@
+class array {
+   
+    public static void main(String[] args) {
+        // 1. Creating an empty array with a specific size (50 slots)
+        int[] marks = new int[50];
+
+        // 2. Creating and initializing an array with values immediately
+        int[] numbers = {1, 2, 3};
+        int[] moreNumbers = {4, 5, 6};
+        String[] fruits = {"apple", "mango", "orange"};
+
+        // Printing a value to test (Arrays use 0-based indexing)
+        System.out.println("First fruit: " + fruits[0]); // Output: apple
+        System.out.println("Length of numbers array: " + numbers.length); // Output: 3
+    }
+}
