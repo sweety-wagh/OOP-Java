@@ -1,0 +1,110 @@
+package application;
+
+public class days {
+    
+    private int day;
+    private int month;
+    private int year;
+    
+    public void setDate(int DD, int MM, int YY) {
+        year = YY;
+        if(MM < 1 || MM > 12 ) 
+            month = 1;
+        else 
+            month = MM;
+        
+        
+        if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+            if(DD < 1 || DD > 31 ) {
+                day = 1;
+            } else {
+                day = DD;
+            }
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            if(DD < 1 || DD > 30 ) {
+                day = 1;
+            } else {
+                day = DD;
+            }
+        } else if (month == 2) {
+            if((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                if(DD < 1 || DD > 29) {
+                    day = 1;
+                } else {
+                    day = DD;
+                }
+            } else {
+                if(DD < 1 || DD > 28) {
+                    day = 1; 
+                } else {
+                    day = DD;
+                }
+            }
+        }
+    }
+    
+    public int getDay() {
+        return day;
+    }
+    
+    public void addDays(int numberOfDays) { 
+        for (int i = 0; i < numberOfDays; i++) {
+            day++; 
+
+            if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) {
+                if (day > 31) {
+                    day = 1;
+                    month++;
+                }
+            } 
+            else if (month == 4 || month == 6 || month == 9 || month == 11) {
+                if (day > 30) {
+                    day = 1;
+                    month++;
+                }
+            } 
+            else if (month == 2) {
+                if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+                    if (day > 29) {
+                        day = 1;
+                        month++;
+                    }
+                } else {
+                    if (day > 28) {
+                        day = 1;
+                        month++;
+                    }
+                }
+            }
+
+            if (month > 12) {
+                month = 1;
+                year++;
+            }
+        }
+    }
+    
+    
+    public void addMonth(int numberOfMonth) {
+        month = month + numberOfMonth;
+        while (month > 12) {
+            month = month - 12;
+            year++;
+        }
+    }
+    
+    
+    public void addYear(int numberOfYear) {
+        for (int i = 0; i < numberOfYear; i++) {
+            year++;
+        }
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+}
