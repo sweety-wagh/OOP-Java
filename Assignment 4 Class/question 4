@@ -1,0 +1,33 @@
+
+public class Empolyeesalary {
+	double salary;
+	int hours;
+	
+	void getInfo(int hours,double salary){
+		this.hours=hours;
+	    this.salary=salary;
+	}
+	
+
+
+ void addSal(){
+	 if(this.salary<500) {
+		 this.salary+=10;
+	 }
+}
+ void addWork(){
+	 if(this.hours>6) {
+		 this.salary+=5;
+	 }
+}
+ double getsalaryfinal() {
+	 return this.salary;
+ }
+ public static void main (String args[]) {
+	 Empolyeesalary emp =new Empolyeesalary();
+	 emp.getInfo(450, 8);
+	 emp.addSal();
+	 emp.addWork();
+	 System.out.println("Final Salary: $" + emp.getsalaryfinal());
+ }
+}
