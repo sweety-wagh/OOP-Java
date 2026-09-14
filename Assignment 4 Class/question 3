@@ -1,0 +1,41 @@
+
+	
+
+public class Employees {
+    // 1. Class fields to hold employee information
+    String name;
+    int yearOfJoining;
+    double salary;
+    String address;
+
+    // 2. Constructor to initialize each employee object
+    Employees(String name, int yearOfJoining, double salary, String address) {
+        this.name = name;
+        this.yearOfJoining = yearOfJoining;
+        this.salary = salary;
+        this.address = address;
+    }
+
+    // 3. Helper method to print data formatted as a table row
+    // %-15s means: Left-aligned String, padded to 15 characters
+    // %-20d means: Left-aligned integer, padded to 20 characters
+    void printRow() {
+        System.out.printf("%-15s %-20d %-15s\n", name, yearOfJoining, address);
+    }
+
+    public static void main(String[] args) {
+        // 4. Create three separate employee objects with their respective data
+        Employees emp1 = new Employees("Robert", 1994, 50000, "64C- WallsStreat");
+        Employees emp2 = new Employees("Sam", 2000, 60000, "68D- WallsStreat");
+        Employees emp3 = new Employees("John", 1999, 55000, "26B- WallsStreat");
+
+        // 5. Print the table headers matching your requested format
+        System.out.printf("%-15s %-20s %-15s\n", "Name", "Year of joining", "Address");
+        System.out.println("----------------------------------------------------------");
+
+        // 6. Print rows for each employee
+        emp1.printRow();
+        emp2.printRow();
+        emp3.printRow();
+    }
+}
