@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+public class complex {
+    // Instance variables for the real and imaginary components
+    double real;
+    double imag;
+
+    // Constructor to initialize the complex number
+    complex(double r, double i) {
+        this.real = r;
+        this.imag = i;
+    }
+
+    // Method to add two complex numbers
+    complex add(complex other) {
+        double newReal = this.real + other.real;
+        double newImag = this.imag + other.imag;
+        return new complex(newReal, newImag);
+    }
+
+    // Method to subtract two complex numbers
+    complex sub(complex other) {
+        double newReal = this.real - other.real;
+        double newImag = this.imag - other.imag;
+        return new complex(newReal, newImag);
+    }
+
+    // Method to multiply two complex numbers
+    complex prod(complex other) {
+        double newReal = (this.real * other.real) - (this.imag * other.imag);
+        double newImag = (this.real * other.imag) + (this.imag * other.real);
+        return new complex(newReal, newImag);
+    }
+
+    // Helper method to print the complex number cleanly
+    void printComplex() {
+        if (this.imag >= 0) {
+            System.out.println(this.real + " + " + this.imag + "i");
+        } else {
+            // Handles negative imaginary parts beautifully (e.g., 4.0 - 5.0i)
+            System.out.println(this.real + " - " + Math.abs(this.imag) + "i");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // 1. Input gathering for the first complex number
+        System.out.print("Enter real part of first complex number: ");
+        double r1 = sc.nextDouble();
+        System.out.print("Enter imaginary part of first complex number: ");
+        double i1 = sc.nextDouble();
+        complex c1 = new complex(r1, i1);
+
+        // 2. Input gathering for the second complex number
+        System.out.print("\nEnter real part of second complex number: ");
+        double r2 = sc.nextDouble();
+        System.out.print("Enter imaginary part of second complex number: ");
+        double i2 = sc.nextDouble();
+        complex c2 = new complex(r2, i2);
+
+        // 3. Execution of the operations
+        complex sum = c1.add(c2);
+        complex difference = c1.sub(c2);
+        complex product = c1.prod(c2);
+
+        // 4. Output displaying
+        System.out.println("\n--- Results ---");
+        System.out.print("Sum: ");
+        sum.printComplex();
+
+        System.out.print("Difference: ");
+        difference.printComplex();
+
+        System.out.print("Product: ");
+        product.printComplex();
+
+        sc.close();
+    }
+} 
