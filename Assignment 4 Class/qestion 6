@@ -1,0 +1,23 @@
+
+public class triangle {
+	int a;
+	int b;
+	int c;
+	
+	triangle(int pa,int pb,int pc){
+		a=pa;
+		b=pb;
+		c=pc;
+	}
+	int  perimeter() {
+		return a+b+c;
+	}
+	
+	public static void main(String args[]) {
+		triangle  area = new triangle(2,3,4);
+		
+		System.out.println(area.perimeter());
+		
+	}
+
+}
