@@ -1,0 +1,27 @@
+
+public class Rectangle {
+   int a;
+   int b;
+//   Rectangle(int a, int b){
+//	   this.a=a;
+//	   this.b=b;
+//   }
+   
+   //using setter
+   void setdemen(int l, int br) {
+	   a= l;
+	   b = br;
+   }
+   int area() {
+	   return a*b;
+   }
+   public static void main(String args[]) {
+	   Rectangle r1 =new Rectangle();
+	   Rectangle r2 =new Rectangle();
+//	   call setfunction
+	   r1.setdemen(4,5);
+	   r2.setdemen(5,8);
+	   System.out.println(r1.area());
+	   System.out.println(r2.area());
+   }
+}
