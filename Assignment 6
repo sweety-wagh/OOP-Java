@@ -1,0 +1,253 @@
+import java.util.Scanner;
+
+class Employee {
+    String name;
+    String address;
+    int age;
+    char gender;
+    double basicSalary;
+
+    Employee(String name, String address, int age,
+             char gender, double basicSalary) {
+
+        this.name = name;
+        this.address = address;
+        this.age = age;
+        this.gender = gender;
+        this.basicSalary = basicSalary;
+    }
+
+    void display() {
+        System.out.println("Name       : " + name);
+        System.out.println("Address    : " + address);
+        System.out.println("Age        : " + age);
+        System.out.println("Gender     : " + gender);
+        System.out.println("Basic Salary: " + basicSalary);
+    }
+}
+
+
+// ---------------- MANAGER ----------------
+class Manager extends Employee {
+    float hra;
+
+    Manager(String name, String address, int age,
+            char gender, double basicSalary, float hra) {
+
+        super(name, address, age, gender, basicSalary);
+        this.hra = hra;
+    }
+
+    @Override
+    void display() {
+        super.display();
+        System.out.println("HRA        : " + hra);
+    }
+}
+
+
+// ---------------- ENGINEER ----------------
+class Engineer extends Employee {
+    float overtime;
+
+    Engineer(String name, String address, int age,
+             char gender, double basicSalary, float overtime) {
+
+        super(name, address, age, gender, basicSalary);
+        this.overtime = overtime;
+    }
+
+    @Override
+    void display() {
+        super.display();
+        System.out.println("Overtime   : " + overtime);
+    }
+}
+
+
+// ---------------- SALES ----------------
+class Sales extends Employee {
+    float commission;
+
+    Sales(String name, String address, int age,
+          char gender, double basicSalary, float commission) {
+
+        super(name, address, age, gender, basicSalary);
+        this.commission = commission;
+    }
+
+    @Override
+    void display() {
+        super.display();
+        System.out.println("Commission : " + commission);
+    }
+}
+
+
+// ---------------- MAIN ----------------
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        // ONE ARRAY FOR EACH
+        Manager[] managerArr = new Manager[40];
+        Engineer[] engineerArr = new Engineer[40];
+        Sales[] salesArr = new Sales[40];
+
+        int managerCount = 0;
+        int engineerCount = 0;
+        int salesCount = 0;
+
+        boolean status = true;
+
+        while (status) {
+
+            System.out.println("\n===== EMPLOYEE MENU =====");
+            System.out.println("1. Add Manager");
+            System.out.println("2. Add Engineer");
+            System.out.println("3. Add Sales");
+            System.out.println("4. Display Manager");
+            System.out.println("5. Display Engineer");
+            System.out.println("6. Display Sales");
+            System.out.println("7. Exit");
+
+            System.out.print("Enter your choice: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+
+                // -------- MANAGER --------
+                case 1:
+                    System.out.print("Enter Name: ");
+                    String mName = sc.nextLine();
+
+                    System.out.print("Enter Address: ");
+                    String mAddress = sc.nextLine();
+
+                    System.out.print("Enter Age: ");
+                    int mAge = sc.nextInt();
+
+                    System.out.print("Enter Gender: ");
+                    char mGender = sc.next().charAt(0);
+
+                    System.out.print("Enter Basic Salary: ");
+                    double mSalary = sc.nextDouble();
+
+                    System.out.print("Enter HRA: ");
+                    float hra = sc.nextFloat();
+
+                    managerArr[managerCount] =
+                        new Manager(mName, mAddress, mAge,
+                                    mGender, mSalary, hra);
+
+                    managerArr[managerCount].display();
+
+                    managerCount++;
+                    break;
+
+
+                // -------- ENGINEER --------
+                case 2:
+                    System.out.print("Enter Name: ");
+                    String eName = sc.nextLine();
+
+                    System.out.print("Enter Address: ");
+                    String eAddress = sc.nextLine();
+
+                    System.out.print("Enter Age: ");
+                    int eAge = sc.nextInt();
+
+                    System.out.print("Enter Gender: ");
+                    char eGender = sc.next().charAt(0);
+
+                    System.out.print("Enter Basic Salary: ");
+                    double eSalary = sc.nextDouble();
+
+                    System.out.print("Enter Overtime: ");
+                    float overtime = sc.nextFloat();
+
+                    engineerArr[engineerCount] =
+                        new Engineer(eName, eAddress, eAge,
+                                     eGender, eSalary, overtime);
+
+                    engineerArr[engineerCount].display();
+
+                    engineerCount++;
+                    break;
+
+
+                // -------- SALES --------
+                case 3:
+                    System.out.print("Enter Name: ");
+                    String sName = sc.nextLine();
+
+                    System.out.print("Enter Address: ");
+                    String sAddress = sc.nextLine();
+
+                    System.out.print("Enter Age: ");
+                    int sAge = sc.nextInt();
+
+                    System.out.print("Enter Gender: ");
+                    char sGender = sc.next().charAt(0);
+
+                    System.out.print("Enter Basic Salary: ");
+                    double sSalary = sc.nextDouble();
+
+                    System.out.print("Enter Commission: ");
+                    float commission = sc.nextFloat();
+
+                    salesArr[salesCount] =
+                        new Sales(sName, sAddress, sAge,
+                                  sGender, sSalary, commission);
+
+                    salesArr[salesCount].display();
+
+                    salesCount++;
+                    break;
+
+
+                // -------- DISPLAY MANAGER --------
+                case 4:
+                    for (int i = 0; i < managerCount; i++) {
+                        System.out.println("\n--- Manager ---");
+                        managerArr[i].display();
+                    }
+                    break;
+
+
+                // -------- DISPLAY ENGINEER --------
+                case 5:
+                    for (int i = 0; i < engineerCount; i++) {
+                        System.out.println("\n--- Engineer ---");
+                        engineerArr[i].display();
+                    }
+                    break;
+
+
+                // -------- DISPLAY SALES --------
+                case 6:
+                    for (int i = 0; i < salesCount; i++) {
+                        System.out.println("\n--- Sales ---");
+                        salesArr[i].display();
+                    }
+                    break;
+
+
+                // -------- EXIT --------
+                case 7:
+                    status = false;
+                    System.out.println("Program Ended.");
+                    break;
+
+
+                default:
+                    System.out.println("Enter valid input!");
+            }
+        }
+
+        sc.close();
+    }
+}
